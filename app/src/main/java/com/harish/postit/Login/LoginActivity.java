@@ -131,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                                                  Log.d(TAG, "onComplete: success. email is verified.");
                                                  Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                                  startActivity(intent);
+                                                 finish();
                                              }
 
                                          }catch (NullPointerException e){
@@ -160,6 +161,7 @@ public class LoginActivity extends AppCompatActivity {
          If the user is logged in then navigate to HomeActivity and call 'finish()'
           */
          if(mAuth.getCurrentUser() != null){
+             Toast.makeText(mContext, mAuth.getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
              Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
              startActivity(intent);
              finish();
@@ -182,6 +184,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Toast.makeText(mContext, user.getDisplayName(), Toast.LENGTH_SHORT).show();
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");

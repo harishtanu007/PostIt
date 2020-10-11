@@ -35,8 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
 
     private Context mContext;
-    private String email, username, password;
-    private EditText mEmail, mPassword, mUsername;
+    private String email, username, password,reEnterPassword;
+    private EditText mEmail, mPassword, mUsername,mReEnterPassword;
     private TextView loadingPleaseWait;
     private Button btnRegister;
     private ProgressBar mProgressBar;
@@ -71,8 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
                 email = mEmail.getText().toString();
                 username = mUsername.getText().toString();
                 password = mPassword.getText().toString();
-
-                if(checkInputs(email, username, password)){
+                reEnterPassword=mReEnterPassword.getText().toString();
+                if(checkInputs(email, username, password,reEnterPassword)){
                     mProgressBar.setVisibility(View.VISIBLE);
                     loadingPleaseWait.setVisibility(View.VISIBLE);
 
@@ -82,10 +82,15 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private boolean checkInputs(String email, String username, String password){
+    private boolean checkInputs(String email, String username, String password, String reEnterPassword){
         Log.d(TAG, "checkInputs: checking inputs for null values.");
         if(email.equals("") || username.equals("") || password.equals("")){
             Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!password.equals(reEnterPassword))
+        {
+            Toast.makeText(mContext, "Passwords Doesn't match", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -101,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         loadingPleaseWait = (TextView) findViewById(R.id.loadingPleaseWait);
         mPassword = (EditText) findViewById(R.id.input_password);
+        mReEnterPassword=findViewById(R.id.reinput_password);
         mContext = RegisterActivity.this;
         mProgressBar.setVisibility(View.GONE);
         loadingPleaseWait.setVisibility(View.GONE);
