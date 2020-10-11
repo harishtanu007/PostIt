@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.net.Inet4Address;
 
+import com.google.firebase.database.ServerValue;
 import com.harish.postit.Login.LoginActivity;
 import com.harish.postit.R;
 
@@ -57,7 +58,13 @@ public class SignOutFragment extends Fragment {
                 mProgressBar.setVisibility(View.VISIBLE);
                 tvSigningOut.setVisibility(View.VISIBLE);
 
-                mAuth.signOut();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if (currentUser != null) {
+
+                    FirebaseAuth.getInstance().signOut();
+                    //ssendToStart();
+
+                }
                 getActivity().finish();
             }
         });

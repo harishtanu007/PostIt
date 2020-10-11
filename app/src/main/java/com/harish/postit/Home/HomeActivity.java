@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,15 +37,7 @@ import com.harish.postit.opengl.NewStoryActivity;
 public class HomeActivity extends AppCompatActivity implements
         MainFeedListAdapter.OnLoadMoreItemsListener{
 
-    @Override
-    public void onLoadMoreItems() {
-        Log.d(TAG, "onLoadMoreItems: displaying more photos");
-        HomeFragment fragment = (HomeFragment)getSupportFragmentManager()
-                .findFragmentByTag("android:switcher:" + R.id.viewpager_container + ":" + mViewPager.getCurrentItem());
-        if(fragment != null){
-            fragment.displayMorePhotos();
-        }
-    }
+
 
     private static final String TAG = "HomeActivity";
     private static final int ACTIVITY_NUM = 0;
@@ -69,6 +62,12 @@ public class HomeActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Log.d(TAG, "onCreate: starting.");
+
+        mAuth = FirebaseAuth.getInstance();
+
+        checkUser();
+
+
         mViewPager = (ViewPager) findViewById(R.id.viewpager_container);
         mFrameLayout = (FrameLayout) findViewById(R.id.container);
         mRelativeLayout = (RelativeLayout) findViewById(R.id.relLayoutParent);
@@ -79,6 +78,14 @@ public class HomeActivity extends AppCompatActivity implements
         setupBottomNavigationView();
         setupViewPager();
 
+    }
+
+    private void checkUser() {
+        if(mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
     }
 
     public void openNewStoryActivity(){
@@ -127,6 +134,22 @@ public class HomeActivity extends AppCompatActivity implements
         super.onBackPressed();
         if(mFrameLayout.getVisibility() == View.VISIBLE){
             showLayout();
+        }
+    }
+
+    @Override
+    public void onLoadMoreItems() {
+        Log.d(TAG, "onLoadMoreItems: displaying more photos");
+        try {
+            HomeFragment fragment = (HomeFragment) getSupportFragmentManager()
+                    .findFragmentByTag("android:switcher:" + R.id.viewpager_container + ":" + mViewPager.getCurrentItem());
+            if (fragment != null) {
+                fragment.displayMorePhotos();
+            }
+        }
+        catch (Exception e)
+        {
+            Log.d(TAG, "oh shit crash");
         }
     }
 

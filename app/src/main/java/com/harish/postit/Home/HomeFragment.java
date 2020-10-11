@@ -1,5 +1,6 @@
 package com.harish.postit.Home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.harish.postit.Login.LoginActivity;
 import com.harish.postit.R;
 import com.harish.postit.Utils.MainFeedListAdapter;
 import com.harish.postit.Utils.StoriesRecyclerViewAdapter;
@@ -53,8 +55,14 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
     @Override
     public void onUpdate() {
         Log.d(TAG, "ElasticListView: updating list view...");
-
-        getFollowing();
+        try {
+            getFollowing();
+        }
+        catch (Exception e)
+        {
+            Log.d(TAG, "I'm here");
+            e.printStackTrace();
+        }
     }
 
 
@@ -82,20 +90,26 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
 
     private RecyclerView mRecyclerView;
     public StoriesRecyclerViewAdapter mStoriesAdapter;
+    private FirebaseAuth mAuth;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-//        mListView = (ListView) view.findViewById(R.id.listView);
+
         mListView = (ElasticListView) view.findViewById(R.id.listView);
-
         initListViewRefresh();
-        getFollowing();
-
+        try {
+            getFollowing();
+        }catch (Exception e)
+        {
+            Log.d(TAG, "I'm here again");
+        }
         return view;
     }
+
+
 
     private void initListViewRefresh(){
         mListView.setHorizontalFadingEdgeEnabled(true);

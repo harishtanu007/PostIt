@@ -184,7 +184,16 @@ public class EditProfileFragment extends Fragment implements
         final String website = mWebsite.getText().toString();
         final String description = mDescription.getText().toString();
         final String email = mEmail.getText().toString();
-        final long phoneNumber = Long.parseLong(mPhoneNumber.getText().toString());
+        long phoneNumber = 0;
+        try {
+            phoneNumber = Long.parseLong(mPhoneNumber.getText().toString());
+        }
+        catch (Exception e)
+        {
+            phoneNumber = 0;
+        }
+
+
 
 
         //case1: if the user made a change to their username
