@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "83257169092",
+    "firebase_url": "https://android-instagram-clone-68b23.firebaseio.com",
+    "project_id": "android-instagram-clone-68b23",
+    "storage_bucket": "android-instagram-clone-68b23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83257169092:android:dd42a58cbdb553227fe591",
+        "android_client_info": {
+          "package_name": "com.harish.postit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83257169092-k3819o5g4el2e4i5unee4i4a7motsal3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.harish.postit",
+            "certificate_hash": "ec8919c8e01f65f418809d7e962b8812cac98867"
+          }
+        },
+        {
+          "client_id": "83257169092-4mq2vj612fslmm92ueara00ug2bl1q0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1pmb6_rNWXzif4Glwcp00TjWYAmSjTFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83257169092-4mq2vj612fslmm92ueara00ug2bl1q0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83257169092:android:435e4bbd1478b3d57fe591",
+        "android_client_info": {
+          "package_name": "tabian.com.instagramclone2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83257169092-8k4jmj1cba557fcvoak1co2liek0i968.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tabian.com.instagramclone2",
+            "certificate_hash": "ec8919c8e01f65f418809d7e962b8812cac98867"
+          }
+        },
+        {
+          "client_id": "83257169092-4mq2vj612fslmm92ueara00ug2bl1q0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1pmb6_rNWXzif4Glwcp00TjWYAmSjTFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83257169092-4mq2vj612fslmm92ueara00ug2bl1q0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
